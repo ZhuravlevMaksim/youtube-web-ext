@@ -11,8 +11,18 @@ browser.contextMenus.onClicked.addListener(function(info, tab) {
     }
 });
 
-browser.browserAction.onClicked.addListener(download);
+browser.browserAction.onClicked.addListener(() => {
+    console.log("Sending:  uid");
+    var sending = browser.runtime.sendNativeMessage(
+        "y_uid",
+        document.documentURI);
+    sending.then(onResponse, onError);
+});
 
-function download() {
-    console.log('send download command')
+function onResponse(response) {
+    console.log("Received " + JSON.stringify(response));
+}
+
+function onError(error) {
+    console.log(`Error: ${error}`);
 }
