@@ -17,17 +17,6 @@
     "contextMenus",
     "nativeMessaging"
   ],
-  "content_scripts": [
-    {
-      "matches": [
-        "*://*.youtube.com/*",
-        "*://*.ya.ru/*"
-      ],
-      "js": [
-        "youtube-web-ext.js"
-      ]
-    }
-  ],
   "background": {
     "scripts": [
       "background.js"
